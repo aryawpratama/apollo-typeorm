@@ -1,17 +1,18 @@
 import { Arg, Args, Mutation, Query, Resolver } from "type-graphql";
 import { User } from "../entity/UserEntity";
 import { CreateUser, GetUser, UpdateUser } from "../inputs/User";
-import { Message } from "../objectType/message";
+import { Message } from "../objectType/Message";
+import { UserType } from "../objectType/User.type";
 
 @Resolver()
 export class UserResolver {
-  @Query(() => [User])
+  @Query(() => [UserType])
   async getUsers() {
     const user = await User.find();
     return user;
   }
 
-  @Query(() => [User])
+  @Query(() => [UserType])
   async getUser(@Args() { firstName, id, lastName, username }: GetUser) {
     const query = User.createQueryBuilder();
     query.where(id ? "User.id = :id" : "1=1", { id });
@@ -30,14 +31,14 @@ export class UserResolver {
     return data;
   }
 
-  @Mutation(() => User)
+  @Mutation(() => UserType)
   async createUser(@Arg("data") data: CreateUser) {
     const createdUser = User.create(data);
     await User.save(createdUser);
     return createdUser;
   }
 
-  @Mutation(() => User)
+  @Mutation(() => UserType)
   async updateUser(@Arg("data") data: UpdateUser, @Arg("id") id: number) {
     const target = User.findOne({ where: { id } });
     const updatedUser = Object.assign(target, data);
