@@ -1,0 +1,32 @@
+{
+  "name": "express-spot-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "dev": " tsc && nodemon src/index.ts"
+  },
+  "author": "aryawpratama",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^8.0.29",
+    "class-validator": "^0.13.1",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14",
+    "ts-node": "3.3.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.4.1",
+    "apollo-server-errors": "^3.2.0",
+    "apollo-server-express": "^3.4.1",
+    "express": "^4.17.1",
+    "graphql": "^15.7.2",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.10",
+    "type-graphql": "^1.1.1",
+    "typeorm": "0.2.38"
+  }
+}
