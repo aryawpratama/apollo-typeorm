@@ -9,7 +9,7 @@ export class User extends BaseEntity {
   id: number;
 
   @Field(() => String)
-  @Column()
+  @Column({ unique: true })
   username: string;
 
   @Field(() => String)
@@ -19,6 +19,10 @@ export class User extends BaseEntity {
   @Field(() => String)
   @Column()
   lastName: string;
+
+  @Field(() => String)
+  @Column()
+  role: number;
 
   @Column()
   password: string;
